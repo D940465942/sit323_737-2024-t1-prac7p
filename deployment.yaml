@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-calculator
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: calculator
+  template:
+    metadata:
+      labels:
+        app: calculator
+    spec:
+      containers:
+        - name: calculator
+          image: duozhang/my-calculator:latest
+          ports:
+            - containerPort: 3000

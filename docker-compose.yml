@@ -1,0 +1,17 @@
+version: '3'
+services:
+  web:
+    container_name: calculator
+    image: duozhang/my-calculator:latest
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=development
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:3000/ || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    restart: unless-stopped
+
